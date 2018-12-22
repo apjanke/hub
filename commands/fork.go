@@ -96,7 +96,7 @@ func fork(cmd *Command, args *Args) {
 			parentURL, _ = github.ParseURL(parent.HtmlUrl)
 		}
 		if parentURL == nil || !project.SameAs(parentURL.Project) {
-			err = fmt.Errorf("Error creating fork: %s already exists on %s",
+			err = fmt.Errorf("failed creating fork: %s already exists on %s",
 				forkProject, forkProject.Host)
 			utils.Check(err)
 		}

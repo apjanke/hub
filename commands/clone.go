@@ -93,7 +93,7 @@ func transformCloneArgs(args *Args) {
 				repo, err := gh.Repository(project)
 				if err != nil {
 					if strings.Contains(err.Error(), "HTTP 404") {
-						err = fmt.Errorf("Error: repository %s/%s doesn't exist", project.Owner, project.Name)
+						err = fmt.Errorf("repository %s/%s doesn't exist", project.Owner, project.Name)
 					}
 					utils.Check(err)
 				}
@@ -102,7 +102,7 @@ func transformCloneArgs(args *Args) {
 				name = repo.Name
 				if expectWiki {
 					if !repo.HasWiki {
-						utils.Check(fmt.Errorf("Error: %s/%s doesn't have a wiki", owner, name))
+						utils.Check(fmt.Errorf("%s/%s doesn't have a wiki", owner, name))
 					} else {
 						name = name + ".wiki"
 					}

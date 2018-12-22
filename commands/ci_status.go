@@ -77,7 +77,7 @@ func ciStatus(cmd *Command, args *Args) {
 
 	sha, err := git.Ref(ref)
 	if err != nil {
-		err = fmt.Errorf("Aborted: no revision could be determined from '%s'", ref)
+		err = fmt.Errorf("aborted: no revision could be determined from '%s'", ref)
 	}
 	utils.Check(err)
 

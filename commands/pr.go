@@ -229,7 +229,7 @@ func checkoutPr(command *Command, args *Args) {
 	var newBranchName string
 
 	if len(words) == 0 {
-		utils.Check(fmt.Errorf("Error: No pull request number given"))
+		utils.Check(fmt.Errorf("no pull request number given"))
 	} else if len(words) > 1 {
 		newBranchName = words[1]
 	}

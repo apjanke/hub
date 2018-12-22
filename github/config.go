@@ -230,7 +230,7 @@ func (c *Config) selectHost() *Host {
 	index := c.scanLine()
 	i, err := strconv.Atoi(index)
 	if err != nil || i < 1 || i > options {
-		utils.Check(fmt.Errorf("Error: must enter a number [1-%d]", options))
+		utils.Check(fmt.Errorf("must enter a number [1-%d]", options))
 	}
 
 	return c.Hosts[i-1]

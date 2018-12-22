@@ -136,11 +136,11 @@ func transformCheckoutArgs(args *Args, pullRequest *github.PullRequest, newBranc
 
 func sanitizeCheckoutFlags(args *Args) error {
 	if i := args.IndexOfParam("-b"); i != -1 {
-		return fmt.Errorf("Unsupported flag -b when checking out pull request")
+		return fmt.Errorf("unsupported flag -b when checking out pull request")
 	}
 
 	if i := args.IndexOfParam("--orphan"); i != -1 {
-		return fmt.Errorf("Unsupported flag --orphan when checking out pull request")
+		return fmt.Errorf("unsupported flag --orphan when checking out pull request")
 	}
 
 	return nil

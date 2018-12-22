@@ -18,7 +18,7 @@ var timeNow = time.Now
 
 func Check(err error) {
 	if err != nil {
-		ui.Errorln(err)
+		ui.Errorf("Error: %s\n", err)
 		os.Exit(1)
 	}
 }
@@ -34,7 +34,7 @@ func BrowserLauncher() ([]string, error) {
 	}
 
 	if browser == "" {
-		return nil, errors.New("Please set $BROWSER to a web launcher")
+		return nil, errors.New("please set $BROWSER to a web launcher")
 	}
 
 	return strings.Split(browser, " "), nil

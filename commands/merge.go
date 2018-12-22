@@ -79,7 +79,7 @@ func transformMergeArgs(args *Args) error {
 	branch := pullRequest.Head.Ref
 	headRepo := pullRequest.Head.Repo
 	if headRepo == nil {
-		return fmt.Errorf("Error: that fork is not available anymore")
+		return fmt.Errorf("that fork is not available anymore")
 	}
 
 	args.Before("git", "fetch", remote.Name, fmt.Sprintf("refs/pull/%s/head", id))

@@ -83,7 +83,7 @@ func deleteRepo(command *Command, args *Args) {
 		}
 		utils.Check(scanner.Err())
 		if answer != "yes" {
-			utils.Check(fmt.Errorf("Please type 'yes' for confirmation."))
+			utils.Check(fmt.Errorf("please type 'yes' for confirmation."))
 		}
 	}
 

@@ -533,7 +533,7 @@ text is the title and the rest is the description.`, project))
 	utils.Check(err)
 
 	if title == "" {
-		utils.Check(fmt.Errorf("Aborting creation due to empty issue title"))
+		utils.Check(fmt.Errorf("aborting creation due to empty issue title"))
 	}
 
 	params := map[string]interface{}{

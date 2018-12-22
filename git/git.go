@@ -30,7 +30,7 @@ func Dir() (string, error) {
 
 	output, err := gitOutput("rev-parse", "-q", "--git-dir")
 	if err != nil {
-		return "", fmt.Errorf("Not a git repository (or any of the parent directories): .git")
+		return "", fmt.Errorf("not a git repository (or any of the parent directories): .git")
 	}
 
 	var chdir string
@@ -122,7 +122,7 @@ func BranchAtRef(paths ...string) (name string, err error) {
 		name = strings.TrimPrefix(n, refPrefix)
 		name = strings.TrimSpace(name)
 	} else {
-		err = fmt.Errorf("No branch info in %s: %s", path, n)
+		err = fmt.Errorf("no branch info in %s: %s", path, n)
 	}
 
 	return
@@ -131,7 +131,7 @@ func BranchAtRef(paths ...string) (name string, err error) {
 func Editor() (string, error) {
 	output, err := gitOutput("var", "GIT_EDITOR")
 	if err != nil {
-		return "", fmt.Errorf("Can't load git var: GIT_EDITOR")
+		return "", fmt.Errorf("can't load git var: GIT_EDITOR")
 	}
 
 	return os.ExpandEnv(output[0]), nil
@@ -144,7 +144,7 @@ func Head() (string, error) {
 func SymbolicFullName(name string) (string, error) {
 	output, err := gitOutput("rev-parse", "--symbolic-full-name", name)
 	if err != nil {
-		return "", fmt.Errorf("Unknown revision or path not in the working tree: %s", name)
+		return "", fmt.Errorf("unknown revision or path not in the working tree: %s", name)
 	}
 
 	return output[0], nil
@@ -153,7 +153,7 @@ func SymbolicFullName(name string) (string, error) {
 func Ref(ref string) (string, error) {
 	output, err := gitOutput("rev-parse", "-q", ref)
 	if err != nil {
-		return "", fmt.Errorf("Unknown revision or path not in the working tree: %s", ref)
+		return "", fmt.Errorf("unknown revision or path not in the working tree: %s", ref)
 	}
 
 	return output[0], nil
@@ -163,7 +163,7 @@ func RefList(a, b string) ([]string, error) {
 	ref := fmt.Sprintf("%s...%s", a, b)
 	output, err := gitOutput("rev-list", "--cherry-pick", "--right-only", "--no-merges", ref)
 	if err != nil {
-		return []string{}, fmt.Errorf("Can't load rev-list for %s", ref)
+		return []string{}, fmt.Errorf("can't load rev-list for %s", ref)
 	}
 
 	return output, nil
@@ -235,7 +235,7 @@ func Log(sha1, sha2 string) (string, error) {
 
 	outputs, err := execCmd.CombinedOutput()
 	if err != nil {
-		return "", fmt.Errorf("Can't load git log %s..%s", sha1, sha2)
+		return "", fmt.Errorf("can't load git log %s..%s", sha1, sha2)
 	}
 
 	return outputs, nil
@@ -257,7 +257,7 @@ func ConfigAll(name string) ([]string, error) {
 
 	lines, err := gitOutput(gitConfigCommand([]string{mode, name})...)
 	if err != nil {
-		err = fmt.Errorf("Unknown config %s", name)
+		err = fmt.Errorf("unknown config %s", name)
 	}
 	return lines, err
 }
@@ -274,7 +274,7 @@ func SetGlobalConfig(name, value string) error {
 func gitGetConfig(args ...string) (string, error) {
 	output, err := gitOutput(gitConfigCommand(args)...)
 	if err != nil {
-		return "", fmt.Errorf("Unknown config %s", args[len(args)-1])
+		return "", fmt.Errorf("unknown config %s", args[len(args)-1])
 	}
 
 	if len(output) == 0 {

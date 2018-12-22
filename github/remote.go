@@ -36,7 +36,7 @@ func Remotes() (remotes []Remote, err error) {
 
 	rs, err := git.Remotes()
 	if err != nil {
-		err = fmt.Errorf("Can't load git remote")
+		err = fmt.Errorf("can't load git remote")
 		return
 	}
 
@@ -86,7 +86,7 @@ func newRemote(name string, urlMap map[string]string) (Remote, error) {
 	fetchURL, ferr := git.ParseURL(urlMap["fetch"])
 	pushURL, perr := git.ParseURL(urlMap["push"])
 	if ferr != nil && perr != nil {
-		return r, fmt.Errorf("No valid remote URLs")
+		return r, fmt.Errorf("no valid remote URLs")
 	}
 
 	r.Name = name

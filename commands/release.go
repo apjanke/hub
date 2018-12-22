@@ -445,7 +445,7 @@ text is the title and the rest is the description.`, tagName, project))
 	utils.Check(err)
 
 	if title == "" {
-		utils.Check(fmt.Errorf("Aborting release due to empty release title"))
+		utils.Check(fmt.Errorf("aborting release due to empty release title"))
 	}
 
 	params := &github.Release{
@@ -532,7 +532,7 @@ text is the title and the rest is the description.`, tagName, project))
 	utils.Check(err)
 
 	if title == "" && !cmd.FlagPassed("message") {
-		utils.Check(fmt.Errorf("Aborting editing due to empty release title"))
+		utils.Check(fmt.Errorf("aborting editing due to empty release title"))
 	}
 
 	if title != "" {

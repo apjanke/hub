@@ -121,7 +121,7 @@ func NewProjectFromURL(url *url.URL) (p *Project, err error) {
 
 	parts := strings.SplitN(url.Path, "/", 4)
 	if len(parts) <= 2 {
-		err = fmt.Errorf("Invalid GitHub URL: %s", url)
+		err = fmt.Errorf("invalid GitHub URL: %s", url)
 		return
 	}
 

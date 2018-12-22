@@ -197,7 +197,7 @@ func pullRequest(cmd *Command, args *Args) {
 			trackedBranch = nil
 		} else {
 			if baseProject.SameAs(headProject) && base == trackedBranch.ShortName() {
-				e := fmt.Errorf(`Aborted: head branch is the same as base ("%s")`, base)
+				e := fmt.Errorf(`aborted: head branch is the same as base ("%s")`, base)
 				e = fmt.Errorf("%s\n(use `-h <branch>` to specify an explicit pull request head)", e)
 				utils.Check(e)
 			}
@@ -223,7 +223,7 @@ func pullRequest(cmd *Command, args *Args) {
 	if !force && trackedBranch != nil {
 		remoteCommits, _ := git.RefList(trackedBranch.LongName(), "")
 		if len(remoteCommits) > 0 {
-			err = fmt.Errorf("Aborted: %d commits are not yet pushed to %s", len(remoteCommits), trackedBranch.LongName())
+			err = fmt.Errorf("aborted: %d commits are not yet pushed to %s", len(remoteCommits), trackedBranch.LongName())
 			err = fmt.Errorf("%s\n(use `-f` to force submit a pull request anyway)", err)
 			utils.Check(err)
 		}
@@ -249,7 +249,7 @@ func pullRequest(cmd *Command, args *Args) {
 	}
 
 	if flagPullRequestPush && remote == nil {
-		utils.Check(fmt.Errorf("Can't find remote for %s", head))
+		utils.Check(fmt.Errorf("can't find remote for %s", head))
 	}
 
 	messageBuilder.AddCommentedSection(fmt.Sprintf(`Requesting a pull to %s from %s
@@ -267,7 +267,7 @@ of text is the title and the rest is the description.`, fullBase, fullHead))
 	} else if flagPullRequestNoEdit {
 		commits, _ := git.RefList(baseTracking, head)
 		if len(commits) == 0 {
-			utils.Check(fmt.Errorf("Aborted: no commits detected between %s and %s", baseTracking, head))
+			utils.Check(fmt.Errorf("aborted: no commits detected between %s and %s", baseTracking, head))
 		}
 		message, err := git.Show(commits[len(commits)-1])
 		utils.Check(err)
@@ -314,7 +314,7 @@ of text is the title and the rest is the description.`, fullBase, fullHead))
 	utils.Check(err)
 
 	if title == "" && flagPullRequestIssue == "" {
-		utils.Check(fmt.Errorf("Aborting due to empty pull request title"))
+		utils.Check(fmt.Errorf("aborting due to empty pull request title"))
 	}
 
 	if flagPullRequestPush {

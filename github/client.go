@@ -318,7 +318,7 @@ func (client *Client) FetchRelease(project *Project, tagName string) (*Release, 
 
 	if err == nil {
 		if len(releases) < 1 {
-			return nil, fmt.Errorf("Unable to find release with tag name `%s'", tagName)
+			return nil, fmt.Errorf("unable to find release with tag name `%s'", tagName)
 		} else {
 			return &releases[0], nil
 		}
@@ -926,13 +926,13 @@ func normalizeHost(host string) string {
 
 func checkStatus(expectedStatus int, action string, response *simpleResponse, err error) error {
 	if err != nil {
-		return fmt.Errorf("Error %s: %s", action, err.Error())
+		return fmt.Errorf("%s: %s", action, err.Error())
 	} else if response.StatusCode != expectedStatus {
 		errInfo, err := response.ErrorInfo()
 		if err == nil {
 			return FormatError(action, errInfo)
 		} else {
-			return fmt.Errorf("Error %s: %s (HTTP %d)", action, err.Error(), response.StatusCode)
+			return fmt.Errorf("%s: %s (HTTP %d)", action, err.Error(), response.StatusCode)
 		}
 	} else {
 		return nil

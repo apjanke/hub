@@ -73,7 +73,7 @@ func compare(command *Command, args *Args) {
 	)
 
 	usageHelp := func() {
-		utils.Check(fmt.Errorf("Usage: hub compare [-u] [-b <BASE>] [<USER>] [[<START>...]<END>]"))
+		utils.Check(fmt.Errorf("usage: hub compare [-u] [-b <BASE>] [<USER>] [[<START>...]<END>]"))
 	}
 
 	if args.IsParamsEmpty() {

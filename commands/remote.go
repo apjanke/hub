@@ -118,7 +118,7 @@ func transformRemoteArgs(args *Args) {
 		repo, err := gh.Repository(project)
 		if err != nil {
 			if strings.Contains(err.Error(), "HTTP 404") {
-				err = fmt.Errorf("Error: repository %s/%s doesn't exist", project.Owner, project.Name)
+				err = fmt.Errorf("repository %s/%s doesn't exist", project.Owner, project.Name)
 			}
 			utils.Check(err)
 		}

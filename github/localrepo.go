@@ -47,7 +47,7 @@ func (r *GitHubRepo) RemoteByName(name string) (*Remote, error) {
 		}
 	}
 
-	return nil, fmt.Errorf("No git remote with name %s", name)
+	return nil, fmt.Errorf("no git remote with name %s", name)
 }
 
 func (r *GitHubRepo) remotesForPublish(owner string) (remotes []Remote) {
@@ -94,7 +94,7 @@ func (r *GitHubRepo) remotesForPublish(owner string) (remotes []Remote) {
 func (r *GitHubRepo) CurrentBranch() (branch *Branch, err error) {
 	head, err := git.Head()
 	if err != nil {
-		err = fmt.Errorf("Aborted: not currently on any branch.")
+		err = fmt.Errorf("aborted: not currently on any branch.")
 		return
 	}
 
@@ -182,7 +182,7 @@ func (r *GitHubRepo) MainRemote() (remote *Remote, err error) {
 	}
 
 	if remote == nil {
-		err = fmt.Errorf("Can't find git remote origin")
+		err = fmt.Errorf("can't find git remote origin")
 	}
 
 	return
@@ -191,14 +191,14 @@ func (r *GitHubRepo) MainRemote() (remote *Remote, err error) {
 func (r *GitHubRepo) MainProject() (project *Project, err error) {
 	origin, err := r.MainRemote()
 	if err != nil {
-		err = fmt.Errorf("Aborted: the origin remote doesn't point to a GitHub repository.")
+		err = fmt.Errorf("aborted: the origin remote doesn't point to a GitHub repository.")
 
 		return
 	}
 
 	project, err = origin.Project()
 	if err != nil {
-		err = fmt.Errorf("Aborted: the origin remote doesn't point to a GitHub repository.")
+		err = fmt.Errorf("aborted: the origin remote doesn't point to a GitHub repository.")
 	}
 
 	return
